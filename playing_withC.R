@@ -148,7 +148,7 @@ C_input_man <- rep(0,ysim)
 Crop <- c(rep("Grain",ysim*.5),rep("Grass",ysim*.5))
 
 
-### Run Turnover core function -----
+### Run turnover_beta core function -----
 
 result_pools <-
   matrix(ncol = length(initial_value), nrow = length(nsteps))
@@ -159,7 +159,7 @@ result_pools[1, ] <- initial_value
 
 system.time(
   for (i in 2:length(nsteps)) {
-    result_pools[i, ] <- rCTOOL::turnover(i)
+    result_pools[i, ] <- rCTOOL::turnover_beta(i)
   }
   
   
@@ -211,7 +211,7 @@ result_pools[1, ] <- initial_value
 
 system.time(
   for (i in 2:length(nsteps)) {
-    result_pools[i, ] <- rCTOOL::turnover(i)
+    result_pools[i, ] <- rCTOOL::turnover_beta(i)
   }
   
   
@@ -266,7 +266,7 @@ result_pools[1, ] <- initial_value
 
 system.time(
   for (i in 2:length(nsteps)) {
-    result_pools[i, ] <- rCTOOL::turnover(i)
+    result_pools[i, ] <- rCTOOL::turnover_beta(i)
   }
   
   
@@ -293,9 +293,9 @@ pool_cols=values = c(FOM_top="#C52E19", FOM_sub="#54D8B1",
                      HUM_top="#b67c3b", HUM_sub="#5F5647",
                      ROM_top="#175149", ROM_sub="#0C1707")
 
-#result_petsm |> 
+result_petsm |> 
 #result_orgdf |> 
-result_fball |> 
+#result_fball |> 
   as.data.frame() |> 
   mutate(date=make_date(year=1973+yr, month=mth)) |> 
   pivot_longer(
